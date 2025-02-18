@@ -23,9 +23,11 @@ async function executeQuery(){
         }
 
         const json = await response.json();
+
+
         console.log('json:', json)
 
-        updateOutput(json)
+        updateOutput(JSON.stringify(json, null, 2))
     }
     catch(err){
         console.error('Search failed:',err)
@@ -34,8 +36,8 @@ async function executeQuery(){
 }
 </script>
 
-<input id="query" /><button id="search-btn" onclick="executeQuery()">Search</button>
+First, go to <a href="https://cors-anywhere.herokuapp.com/corsdemo">cors-anywhere</a> and click the "Request temporary access to demo server", then come back here and search.
 <hr/>
-<pre id="output">
-    .. Waiting for stuff to load...
-</pre>
+<input id="query" value="mercury" /><button id="search-btn" onclick="executeQuery()">Search</button>
+<hr/>
+<pre id="output">Search something...</pre>
