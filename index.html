@@ -1,1 +1,36 @@
-justinhyland
+<script type="text/javascript">
+
+function updateOutput(content){
+    document.getElementById('output').innerText = content
+}
+
+async function executeQuery(){
+    try {
+        const queryInput = document.getElementById('query');
+
+        console.log('Searching for:', queryInput.value)
+
+        const response = fetch('https://onyxmet.com/index.php?route=product/search/json&term=merc')
+
+        if (!response.ok) {
+            updateOutput(`Response status: ${response.status}`)
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.json();
+        console.log('json:', json)
+
+        updateOutput(json)
+    }
+    catch(err){
+        console.error('Search failed:',err)
+    }
+
+}
+</script>
+
+<input id="query" /><button id="search-btn" onclick="executeQuery()">Search</button>
+<hr/>
+<pre id="output">
+    .. Waiting for stuff to load...
+</pre>
