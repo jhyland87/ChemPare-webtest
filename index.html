@@ -10,7 +10,7 @@ async function executeQuery(){
 
         console.log('Searching for:', queryInput.value)
 
-        const response = fetch('https://cors-anywhere.herokuapp.com/https://onyxmet.com/index.php?route=product/search/json&term=merc', {
+        const response = await fetch('https://cors-anywhere.herokuapp.com/https://onyxmet.com/index.php?route=product/search/json&term=merc', {
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 Accept: 'application/json',
